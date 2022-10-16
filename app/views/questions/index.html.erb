@@ -1,0 +1,17 @@
+<h1>Questions</h1>
+<%= @questions.inspect %>
+
+<% @questions.each do |question| %>
+  <h1><%= question.title %></h1>
+  <time datetime="<%= question.formatted_created_at %>"></time>
+  <%= question.formatted_created_at %>
+  <p>
+    <%= question.body %>
+    <br>
+    <%= link_to 'Show', question_path(question.id) %> |
+    <%= link_to 'Edit', edit_question_path(question.id) %> |
+
+    <%= link_to 'Destroy', question_path(question.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+<!--                                                       data: {method: :delete, confirm: "A u sure?"} %>-->
+  </p>
+<% end %>
